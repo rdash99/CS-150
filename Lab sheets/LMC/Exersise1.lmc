@@ -1,0 +1,8 @@
+START   INP
+        BRZ END
+        ADD TOTAL
+        OUT
+        STA TOTAL
+        BRA START
+END     HLT
+TOTAL   DAT 000
