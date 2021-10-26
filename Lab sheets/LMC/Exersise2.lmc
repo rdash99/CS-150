@@ -1,0 +1,26 @@
+        INP
+        STA NUMONE
+        INP NUMTWO
+        STA NUMTWO
+        SUB ONE
+        STA COUNT
+        LDA NUMONE
+
+LOOP    ADD NUMONE
+        STA NUMTWO
+        LDA COUNT
+        SUB ONE
+        STA COUNT
+        BRZ END
+        LDA NUMTWO
+        BRA LOOP
+        HLT
+
+END     LDA NUMTWO
+        OUT
+        HLT
+
+NUMONE  DAT
+NUMTWO DAT
+COUNT DAT
+ONE     DAT 001
