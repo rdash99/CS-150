@@ -1,6 +1,6 @@
         INP
         STA NUMONE
-        INP NUMTWO
+        INP
         STA NUMTWO
         SUB ONE
         STA COUNT
