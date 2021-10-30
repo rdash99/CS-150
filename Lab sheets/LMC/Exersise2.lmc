@@ -1,19 +1,24 @@
         INP
         STA NUMONE
+        BRZ FIRSTZERO
         INP
         STA NUMTWO
+        BRZ END
         SUB ONE
         STA COUNT
-        LDA NUMONE
 
-LOOP    ADD NUMONE
+LOOP    LDA NUMONE
+        ADD NUMONE
         STA NUMTWO
         LDA COUNT
+        BRZ END
         SUB ONE
         STA COUNT
-        BRZ END
-        LDA NUMTWO
         BRA LOOP
+        HLT
+
+FIRSTZERO LDA NUMONE
+        OUT
         HLT
 
 END     LDA NUMTWO
