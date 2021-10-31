@@ -1,4 +1,3 @@
-;This adds the two inputs
 BR   main
 result: .WORD 0x0000
 num1:.BLOCK  2
