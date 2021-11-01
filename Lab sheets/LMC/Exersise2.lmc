@@ -1,9 +1,12 @@
         INP
         STA NUMONE
+
         BRZ FIRSTZERO
+
         INP
         STA NUMTWO
         BRZ END
+        
         SUB ONE
         STA COUNT
 
