@@ -1,8 +1,10 @@
 BR   main
+
 result: .WORD 0x0000
 num1:.BLOCK  2
 num2:.BLOCK  2
 num3:.BLOCK  2
+
 main:DECI num1,d ;get first number
 LDWA num1,d
 DECI num2,d ;get second number
