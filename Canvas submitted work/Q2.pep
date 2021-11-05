@@ -36,7 +36,7 @@ STWA count, d
 BR sqrn
 
 
-end: DECO nsqrd, d
+end: DECO result1, d
 STOP
 
 
@@ -46,7 +46,7 @@ STWA nsqrd, d
 
 LDWA count, d ;load counter value
 SUBA one, d ;subtract one
-BREQ end ;branch if 0
+BREQ prep1 ;branch if 0
 STWA count, d ;update counter
 
 BR sqrn
