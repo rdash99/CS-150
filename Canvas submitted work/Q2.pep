@@ -67,5 +67,15 @@ STWA count, d ;update counter
 
 BR calc1
 
+calc2: LDWA result2, d
+ADDA numb, d
+STWA result2, d
+
+LDWA count, d ;load counter value
+SUBA one, d ;subtract one
+BREQ end ;branch if 0
+STWA count, d ;update counter
+
+BR calc2
 
 .END
