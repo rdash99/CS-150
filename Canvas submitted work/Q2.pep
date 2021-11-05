@@ -31,5 +31,24 @@ result2: .BLOCK 2
 one: .BLOCK 2
 
 
+main: LDWA numn, d
+STWA count, d
+BR sqrn
+
+
+end: DECO nsqrd, d
+STOP
+
+
+sqrn: LDWA nsqrd, d
+ADDA numn, d
+STWA nsqrd, d
+
+LDWA count, d ;load counter value
+SUBA one, d ;subtract one
+BREQ end ;branch if 0
+STWA count, d ;update counter
+
+BR sqrn
 
 .END
