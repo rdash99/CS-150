@@ -25,6 +25,7 @@ numc: .BLOCK 2
 numn: .BLOCK 2
 count: .BLOCK 2
 ncount: .BLOCK 2
+itcount: .BLOCK 2
 nsqrd: .BLOCK 2
 total: .BLOCK 2
 result1: .BLOCK 2
@@ -33,14 +34,17 @@ one: .BLOCK 2
 
 
 main: LDWA numn, d
-STWA count, d
+STWA itcount, d
+
+LDWA one, d
+STWA ncount, d
 BR sqrn
 
 
 
 
 sqrn: LDWA nsqrd, d
-ADDA numn, d
+ADDA ncount, d
 STWA nsqrd, d
 
 LDWA count, d ;load counter value
@@ -74,7 +78,7 @@ BR calc1
 
 
 
-prep2: LDWA numn, d
+prep2: LDWA ncount, d
 STWA count, d
 BR calc2
 
@@ -96,9 +100,12 @@ LDWA total, d
 ADDA numc, d
 STWA total, d
 
-BR end
+BR out
 
-end: DECO total, d
+
+
+
+out: DECO total, d
 STOP
 
 .END
