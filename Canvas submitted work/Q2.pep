@@ -24,6 +24,7 @@ numb: .BLOCK 2
 numc: .BLOCK 2
 numn: .BLOCK 2
 count: .BLOCK 2
+ncount: .BLOCK 2
 nsqrd: .BLOCK 2
 total: .BLOCK 2
 result1: .BLOCK 2
@@ -36,8 +37,6 @@ STWA count, d
 BR sqrn
 
 
-end: DECO total, d
-STOP
 
 
 sqrn: LDWA nsqrd, d
@@ -99,6 +98,7 @@ STWA total, d
 
 BR end
 
-
+end: DECO total, d
+STOP
 
 .END
