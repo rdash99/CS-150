@@ -52,9 +52,13 @@ STWA count, d ;update counter
 BR sqrn
 
 
+
+
+
 prep1: LDWA nsqrd, d
 STWA count, d
 BR calc1
+
 
 calc1: LDWA result1, d
 ADDA numa, d
@@ -66,6 +70,10 @@ BREQ end ;branch if 0
 STWA count, d ;update counter
 
 BR calc1
+
+
+
+
 
 prep2: LDWA numn, d
 STWA count, d
@@ -81,5 +89,8 @@ BREQ end ;branch if 0
 STWA count, d ;update counter
 
 BR calc2
+
+
+
 
 .END
