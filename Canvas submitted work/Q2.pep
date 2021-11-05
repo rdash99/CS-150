@@ -94,7 +94,7 @@ calc3: LDWA result1, d
 ADDA result2, d
 STWA total, d
 LDWA total, d
-ADDA numc
+ADDA numc, d
 STWA total, d
 
 BR end
