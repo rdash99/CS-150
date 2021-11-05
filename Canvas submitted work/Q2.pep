@@ -36,7 +36,7 @@ STWA count, d
 BR sqrn
 
 
-end: DECO result2, d
+end: DECO total, d
 STOP
 
 
@@ -85,11 +85,19 @@ STWA result2, d
 
 LDWA count, d ;load counter value
 SUBA one, d ;subtract one
-BREQ end ;branch if 0
+BREQ calc3 ;branch if 0
 STWA count, d ;update counter
 
 BR calc2
 
+calc3: LDWA result1, d
+ADDA result2, d
+STWA total, d
+LDWA total, d
+ADDA numc
+STWA total, d
+
+BR end
 
 
 
