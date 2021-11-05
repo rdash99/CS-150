@@ -36,7 +36,7 @@ STWA count, d
 BR sqrn
 
 
-end: DECO result1, d
+end: DECO result2, d
 STOP
 
 
