@@ -67,6 +67,10 @@ STWA count, d ;update counter
 
 BR calc1
 
+prep2: LDWA numn, d
+STWA count, d
+BR calc2
+
 calc2: LDWA result2, d
 ADDA numb, d
 STWA result2, d
