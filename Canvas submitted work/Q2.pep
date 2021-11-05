@@ -51,4 +51,21 @@ STWA count, d ;update counter
 
 BR sqrn
 
+
+prep1: LDWA nsqrd, d
+STWA count, d
+BR calc1
+
+calc1: LDWA result1, d
+ADDA numa, d
+STWA result1, d
+
+LDWA count, d ;load counter value
+SUBA one, d ;subtract one
+BREQ end ;branch if 0
+STWA count, d ;update counter
+
+BR calc1
+
+
 .END
