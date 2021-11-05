@@ -105,6 +105,9 @@ BR out
 
 
 reset: LDWA 0x0000, i
+STWA nsqrd, d
+STWA result1, d
+STWA result2, d
 
 out: DECO total, d
 STOP
