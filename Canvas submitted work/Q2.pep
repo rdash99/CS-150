@@ -104,6 +104,7 @@ BR out
 
 
 
+reset: LDWA 0x0000, i
 
 out: DECO total, d
 STOP
