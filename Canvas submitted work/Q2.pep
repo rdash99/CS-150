@@ -13,6 +13,9 @@ DECI numn, d ;read and store the decimal value for n
 LDWA 0x0001, i
 STWA one, d
 
+LDWA 0x0100, i
+STWA four, d
+
 BR main ;branch past variables
 
 in1: .ASCII "Enter a decimal value for a: \n\x00"
@@ -31,9 +34,12 @@ total: .BLOCK 2
 result1: .BLOCK 2
 result2: .BLOCK 2
 one: .BLOCK 2
+final: .BLOCK 2
+four: .BLOCK 2
 
 
-main: LDWA numn, d
+main: LDWA four, d
+ADDA four, d
 STWA itcount, d
 
 LDWA one, d
@@ -108,8 +114,34 @@ reset: LDWA 0x0000, i
 STWA nsqrd, d
 STWA result1, d
 STWA result2, d
+LDWA final, d
+BREQ iterate
+BR end
+
+
+
+iterate: LDWA itcount, d
+SUBA one, d
+BREQ: endprep
+STWA itcount, d
+
+LDWA ncount
+ADDA one, d
+BR sqrn
+
+endprep: LDWA final, d
+ADDA one, d
+STWA final, d
+LDWA numn, d
+STWA ncount, d
+BR sqrn
+
+
 
 out: DECO total, d
+BR reset
+
+end: DECO total, d
 STOP
 
 .END
