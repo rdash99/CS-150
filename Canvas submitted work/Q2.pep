@@ -10,8 +10,8 @@ DECI numc, d ;read and store the decimal value for c
 STRO in4, d ;ask for the decimal value for n
 DECI numn, d ;read and store the decimal value for n
 
-LDWA 0x0001, i
-STWA one, d
+LDWA 0x0001, i ;load one into the accumlator
+STWA one, d ;store it as a vaiable named one for use later
 
 BR main ;branch past variables
 
