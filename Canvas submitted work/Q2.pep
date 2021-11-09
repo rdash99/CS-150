@@ -13,9 +13,6 @@ DECI numn, d ;read and store the decimal value for n
 LDWA 0x0001, i
 STWA one, d
 
-LDWA 0x0100, i
-STWA four, d
-
 BR main ;branch past variables
 
 in1: .ASCII "Enter a decimal value for a: \n\x00"
@@ -27,30 +24,24 @@ numb: .BLOCK 2
 numc: .BLOCK 2
 numn: .BLOCK 2
 count: .BLOCK 2
-ncount: .BLOCK 2
-itcount: .BLOCK 2
 nsqrd: .BLOCK 2
 total: .BLOCK 2
 result1: .BLOCK 2
 result2: .BLOCK 2
 one: .BLOCK 2
-final: .BLOCK 2
-four: .BLOCK 2
 
 
-main: LDWA four, d
-ADDA four, d
-STWA itcount, d
-
-LDWA one, d
-STWA ncount, d
+main: LDWA numn, d
+STWA count, d
 BR sqrn
 
 
+end: DECO total, d
+STOP
 
 
 sqrn: LDWA nsqrd, d
-ADDA ncount, d
+ADDA numn, d
 STWA nsqrd, d
 
 LDWA count, d ;load counter value
@@ -84,7 +75,7 @@ BR calc1
 
 
 
-prep2: LDWA ncount, d
+prep2: LDWA numn, d
 STWA count, d
 BR calc2
 
@@ -103,45 +94,11 @@ calc3: LDWA result1, d
 ADDA result2, d
 STWA total, d
 LDWA total, d
-ADDA numc, d
+ADDA numc
 STWA total, d
 
-BR out
-
-
-
-reset: LDWA 0x0000, i
-STWA nsqrd, d
-STWA result1, d
-STWA result2, d
-LDWA final, d
-BREQ iterate
 BR end
 
 
-
-iterate: LDWA itcount, d
-SUBA one, d
-BREQ: endprep
-STWA itcount, d
-
-LDWA ncount
-ADDA one, d
-BR sqrn
-
-endprep: LDWA final, d
-ADDA one, d
-STWA final, d
-LDWA numn, d
-STWA ncount, d
-BR sqrn
-
-
-
-out: DECO total, d
-BR reset
-
-end: DECO total, d
-STOP
 
 .END
