@@ -23,6 +23,13 @@ in1: .ASCII "Enter a decimal value for a: \n\x00"
 in2: .ASCII "Enter a decimal value for b: \n\x00"
 in3: .ASCII "Enter a decimal value for c: \n\x00"
 in4: .ASCII "Enter a decimal value for n: \n\x00"
+out1: .ASCII "Term 1: "
+out2: .ASCII "Term 2: "
+out3: .ASCII "Term 3: "
+out4: .ASCII "Term 4: "
+outn: .ASCII "Term "
+colon: .ASCII ": "
+newline: .ASCII "\n\x00"
 numa: .BLOCK 2
 numb: .BLOCK 2
 numc: .BLOCK 2
