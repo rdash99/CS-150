@@ -11,11 +11,11 @@ STRO in4, d ;ask for the decimal value for n
 DECI numn, d ;read and store the decimal value for n
 
 LDWA 0x0001, i ;load one into the accumlator
-STWA one, d ;store it as a vaiable named one for use later
+STWA one, d ;store it as a variable named one for use later
 
 LDWA 0x0004, i
-STWA numn2, d ;load two into the
-STWA countn, d ;store the
+STWA numn2, d ;load four into the variable
+STWA countn, d ;store the value into a counter
 
 BR main ;branch past variables
 
@@ -49,33 +49,33 @@ totaln: .BLOCK 2
 one: .BLOCK 2
 
 
-main: LDWA numn2, d
-STWA count, d
-BR sqrn
+main: LDWA numn2, d ;load the current value of n
+STWA count, d ;store into the counter
+BR sqrn ;branch to the square n function/loop
 
 
 
-sqrn: LDWA nsqrd, d
-ADDA numn2, d
-STWA nsqrd, d
+sqrn: LDWA nsqrd, d ;load the running total
+ADDA numn2, d ;add the current value of n to the running total
+STWA nsqrd, d ;store the running total
 
 LDWA count, d ;load counter value
 SUBA one, d ;subtract one
-BREQ prep1 ;branch if 0
+BREQ prep1 ;branch if 0 -> update the variables for the next portion of the calculation
 STWA count, d ;update counter
 
-BR sqrn
+BR sqrn ;loop
 
 
 
 
 
-prep1: LDWA nsqrd, d
+prep1: LDWA nsqrd, d ;load 
 STWA count, d
 BR calc1
 
 
-calc1: LDWA result1, d
+calc1: LDWA result1, d ;load the result of the first calculation
 ADDA numa, d
 STWA result1, d
 
@@ -180,6 +180,9 @@ BR main
 last: LDWA numn, d
 STWA numn2, d
 BR reset
+
+
+
 
 out: STRO out1, d
 DECO total1, d
