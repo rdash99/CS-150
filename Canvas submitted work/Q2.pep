@@ -23,12 +23,12 @@ in1: .ASCII "Enter a decimal value for a: \n\x00"
 in2: .ASCII "Enter a decimal value for b: \n\x00"
 in3: .ASCII "Enter a decimal value for c: \n\x00"
 in4: .ASCII "Enter a decimal value for n: \n\x00"
-out1: .ASCII "Term 1: "
-out2: .ASCII "Term 2: "
-out3: .ASCII "Term 3: "
-out4: .ASCII "Term 4: "
-outn: .ASCII "Term "
-colon: .ASCII ": "
+out1: .ASCII "Term 1: \x00"
+out2: .ASCII "Term 2: \x00"
+out3: .ASCII "Term 3: \x00"
+out4: .ASCII "Term 4: \x00"
+outn: .ASCII "Term \x00"
+colon: .ASCII ": \x00"
 newline: .ASCII "\n\x00"
 numa: .BLOCK 2
 numb: .BLOCK 2
@@ -109,14 +109,14 @@ calc3: LDWA result1, d
 ADDA result2, d
 STWA total, d
 LDWA total, d
-ADDA numc
+ADDA numc, d
 STWA total, d
 
 
 LDWA countn, d ;load counter value
-BREQ out5 ;change
+BREQ out
 
-BR end
+BR check
 
 
 
@@ -167,13 +167,42 @@ SUBA 0x0001, i
 STWA countn, d
 BREQ last ;move to the last loop when the counter reaches 0
 STWA numn2, d
+BR reset
+
+reset: LDWA 0x0000, i
+STWA nsqrd, d
+STWA total, d
+STWA result1, d
+STWA result2, d
 BR main
+
 
 last: LDWA numn, d
 STWA numn2, d
-BR main
+BR reset
 
-end: DECO total, d
+out: STRO out1, d
+DECO total1, d
+STRO newline, d
+
+STRO out2, d
+DECO total2, d
+STRO newline, d
+
+STRO out3, d
+DECO total3, d
+STRO newline, d
+
+STRO out4, d
+DECO total4, d
+STRO newline, d
+
+STRO newline, d
+STRO outn, d
+DECO numn, d
+STRO colon, d
+DECO total, d
+STRO newline, d
 STOP
 
 .END
