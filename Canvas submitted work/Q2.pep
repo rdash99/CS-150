@@ -28,6 +28,11 @@ nsqrd: .BLOCK 2
 total: .BLOCK 2
 result1: .BLOCK 2
 result2: .BLOCK 2
+total1: .BLOCK 2
+total2: .BLOCK 2
+total3: .BLOCK 2
+total4: .BLOCK 2
+totaln: .BLOCK 2
 one: .BLOCK 2
 
 
@@ -35,9 +40,6 @@ main: LDWA numn, d
 STWA count, d
 BR sqrn
 
-
-end: DECO total, d
-STOP
 
 
 sqrn: LDWA nsqrd, d
@@ -99,6 +101,7 @@ STWA total, d
 
 BR end
 
-
+end: DECO total, d
+STOP
 
 .END
