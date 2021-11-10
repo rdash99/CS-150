@@ -24,6 +24,7 @@ numb: .BLOCK 2
 numc: .BLOCK 2
 numn: .BLOCK 2
 count: .BLOCK 2
+countn: .BLOCK 2
 nsqrd: .BLOCK 2
 total: .BLOCK 2
 result1: .BLOCK 2
@@ -99,7 +100,28 @@ LDWA total, d
 ADDA numc
 STWA total, d
 
+
+LDWA countn, d ;load counter value
+BREQ out5
+
 BR end
+
+check: LDWA countn, d ;load counter value
+SUBA 0x0004
+BREQ store4
+
+
+
+
+
+store4: LDWA total, d
+STWA total4, d
+BR iterate
+
+
+
+
+iterate:
 
 end: DECO total, d
 STOP
