@@ -143,7 +143,17 @@ BREQ store1
 
 
 
+store1: LDWA total, d
+STWA total1, d
+BR iterate
 
+store2: LDWA total, d
+STWA total2, d
+BR iterate
+
+store3: LDWA total, d
+STWA total3, d
+BR iterate
 
 store4: LDWA total, d
 STWA total4, d
@@ -155,7 +165,7 @@ BR iterate
 iterate: LDWA countn, d ;load counter value
 SUBA 0x0001, i
 STWA countn, d
-BREQ last
+BREQ last ;move to the last loop when the counter reaches 0
 STWA numn2, d
 BR main
 
