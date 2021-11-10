@@ -13,6 +13,10 @@ DECI numn, d ;read and store the decimal value for n
 LDWA 0x0001, i ;load one into the accumlator
 STWA one, d ;store it as a vaiable named one for use later
 
+LDWA 0x0004, i
+STWA numn2, d ;load two into the
+STWA countn, d ;store the
+
 BR main ;branch past variables
 
 in1: .ASCII "Enter a decimal value for a: \n\x00"
@@ -23,6 +27,7 @@ numa: .BLOCK 2
 numb: .BLOCK 2
 numc: .BLOCK 2
 numn: .BLOCK 2
+numn2: .BLOCK 2
 count: .BLOCK 2
 countn: .BLOCK 2
 nsqrd: .BLOCK 2
@@ -37,14 +42,14 @@ totaln: .BLOCK 2
 one: .BLOCK 2
 
 
-main: LDWA numn, d
+main: LDWA numn2, d
 STWA count, d
 BR sqrn
 
 
 
 sqrn: LDWA nsqrd, d
-ADDA numn, d
+ADDA numn2, d
 STWA nsqrd, d
 
 LDWA count, d ;load counter value
@@ -102,13 +107,32 @@ STWA total, d
 
 
 LDWA countn, d ;load counter value
-BREQ out5
+BREQ out5 ;change
 
 BR end
 
+
+
+
+
+
+
 check: LDWA countn, d ;load counter value
-SUBA 0x0004
+SUBA 0x0004, i
 BREQ store4
+ADDA 0x0004, i
+
+SUBA 0x0003, i
+BREQ store3
+ADDA 0x0003, i
+
+SUBA 0x0002, i
+BREQ store2
+ADDA 0x0002, i
+
+SUBA 0x0001, i
+BREQ store1
+
 
 
 
@@ -121,7 +145,16 @@ BR iterate
 
 
 
-iterate:
+iterate: LDWA countn, d ;load counter value
+SUBA 0x0001, i
+STWA countn, d
+BREQ last
+STWA numn2, d
+BR main
+
+last: LDWA numn, d
+STWA numn2, d
+BR main
 
 end: DECO total, d
 STOP
