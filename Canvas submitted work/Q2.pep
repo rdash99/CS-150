@@ -90,7 +90,7 @@ BR calc1
 
 
 
-prep2: LDWA numn, d
+prep2: LDWA numn2, d
 STWA count, d
 BR calc2
 
