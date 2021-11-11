@@ -5,9 +5,9 @@ BREQ end ;if zero is input then branch to the end
 BRLT loop2 ;if the input is negative then branch to the second loop
 BR loop ;if the input is positive then branch to the first loop
 
-msg: .ASCII "Enter a decimal number: "
-newline: .ASCII "\n\x00"
-num: .BLOCK 2
+msg: .ASCII "Enter a decimal number: " ;print the message
+newline: .ASCII "\n\x00" ;newline character
+num: .BLOCK 2 ;define the number block
 
 
 loop: DECO num, d ;print the number
