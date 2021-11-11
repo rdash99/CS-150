@@ -10,6 +10,8 @@ DECI numc, d ;read and store the decimal value for c
 STRO in4, d ;ask for the decimal value for n
 DECI numn, d ;read and store the decimal value for n
 
+STRO newline, d ;create a newline character
+
 LDWA 0x0001, i ;load one into the accumlator
 STWA one, d ;store it as a variable named one for use later
 
