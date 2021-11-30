@@ -1,0 +1,28 @@
+# convert from decimal to a base R
+
+SET decimal TO float(INPUT("Enter a decimal number: "))
+
+SET base TO int(INPUT("Enter a base number: "))
+
+SET output TO []
+
+
+
+# convert decimal to a base R
+
+WHILE decimal > 0:
+
+    output.append(int(decimal % base))
+
+    SET decimal TO decimal // base
+
+
+
+# OUTPUT the result
+
+output.reverse()
+
+FOR i IN output:
+
+    OUTPUT(i, end="")
+
